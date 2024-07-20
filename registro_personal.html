@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Personal Cafetería UAI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="http://localhost/formulario/style.css">
+    <script defer src="validacion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <style>
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 5px 20px;
+            font-size: 14px;
+            background-color: darkseagreen;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById('registroForm');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                const formData = new FormData(form);
+
+                fetch('añadir.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Assuming the server returns success response, redirect to bienvenida.html
+                    window.location.href = 'bienvenida1.php';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Optionally handle errors
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button class="back-to-home" onclick="window.location.href='index.html'">Inicio</button>
+
+    <form id="registroForm" action="añadir.php" method="post" enctype="multipart/form-data">
+        <h2>¡Bienvenido(a)!</h2>
+        <p>Inicia tu registro como parte del personal de la Cafetería UAI</p>
+
+        <div class="input-wrapper">
+            <i class="bi bi-person"></i>
+            <input type="text" name="nombres" id="nombres" placeholder="Nombres" required pattern="[A-Za-z\s]{2,50}" title="Solo se permiten letras y espacios.">
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-person"></i>
+            <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required pattern="[A-Za-z\sñÑ]{2,50}" title="Solo se permiten letras, espacios y la letra ñ.">
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-123"></i>
+            <input type="number" name="edad" id="edad" placeholder="Edad" required min="18" max="100">
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-person-vcard"></i>
+            <input type="text" name="dni" id="dni" placeholder="DNI" required pattern="\d{8}" title="El DNI debe tener 8 dígitos.">
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-phone"></i>
+            <input type="text" name="celular" id="celular" placeholder="Celular" required pattern="\d{9}" title="El número de celular debe tener 9 dígitos.">
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-people-fill"></i>
+            <input type="text" name="cargo" placeholder="Cargo" required>
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-envelope"></i>
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="input-wrapper">
+            <input type="password" name="contraseña" id="contraseña" placeholder="Contraseña" required minlength="8" title="La contraseña debe tener al menos 8 caracteres.">
+            <i class="bi bi-eye-slash toggle-password" id="togglePassword"></i>
+        </div>
+
+        <div class="input-wrapper">
+            <input type="password" name="confirmar_contraseña" id="confirmar_contraseña" placeholder="Confirmar Contraseña" required>
+            <i class="bi bi-eye-slash toggle-password" id="toggleConfirmPassword"></i>
+        </div>
+
+        <div class="input-wrapper">
+            <i class="bi bi-images"></i>
+            <input type="file" name="imagen">
+        </div>
+        
+        <input type="submit" value="Enviar" class="btn" name="Enviar">
+
+    </form>
+
+</body>
+
+</html>
+

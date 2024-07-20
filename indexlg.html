@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost/login//style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login</title>
+    <style>
+        /* Estilos para el icono */
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px; /* Espacio entre el icono y el campo */
+        }
+        .password-toggle {
+            position: relative;
+        }
+        .password-toggle input[type="password"] {
+            padding-right: 2.5rem;
+        }
+        .password-toggle .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form" action="login.php" method="post">
+        <!-- Formulario para login normal -->
+        <div class="flex-column">
+            <label>Nombre de Usuario</label>
+        </div>
+        <div class="inputForm">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22c-5.514 0-10-4.486-10-10S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                <path d="M13 15h-2v-2h2v2zm0-4h-2V7h2v4z"/>
+            </svg>
+            <input name="username" placeholder="Ingrese su Nombre de Usuario" class="input" type="text" required>
+        </div>
+        <div class="flex-column">
+            <label>Email </label>
+        </div>
+        <div class="inputForm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 32 32" height="20">
+                <g data-name="Layer 3" id="Layer_3">
+                    <path d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z"></path>
+                </g>
+            </svg>
+            <input name="email" placeholder="Ingrese su Email" class="input" type="text">
+        </div>
+
+        <div class="flex-column">
+            <label>Contraseña </label>
+        </div>
+        <div class="inputForm password-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="-64 0 512 512" height="20">
+                <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
+                <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
+            </svg>
+            <input name="password" placeholder="Ingrese su contraseña" class="input" type="password" id="password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24">
+                    <path d="M12 4C6.48 4 2 8.48 2 13s4.48 9 10 9 10-4.48 10-9-4.48-9-10-9zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+            </span>
+            <span class="toggle-password" onclick="togglePasswordVisibility()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24">
+                    <path d="M12 4C6.48 4 2 8.48 2 13s4.48 9 10 9 10-4.48 10-9-4.48-9-10-9zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/><path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+            </span>
+        </div>
+
+        <!-- Checkbox y enlace para recordar contraseña -->
+        <div class="flex-row">
+            <div>
+                <input type="checkbox" name="remember">
+                <label>Recordarme </label>
+            </div>
+
+        </div>
+
+        <button type="submit" class="button-submit">Iniciar Sesión</button>
+
+        <!-- Enlace para registrarse -->
+        <p class="p">¿No tienes una cuenta? <a href="registro.html" class="span">Registrarse</a></p>
+    </form>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var icons = document.querySelectorAll(".toggle-password svg");
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icons.forEach(icon => {
+                    icon.setAttribute("viewBox", "0 0 24 24");
+                    icon.innerHTML = '<path d="M12 4C6.48 4 2 8.48 2 13s4.48 9 10 9 10-4.48 10-9-4.48-9-10-9zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+                });
+            } else {
+                passwordField.type = "password";
+                icons.forEach(icon => {
+                    icon.setAttribute("viewBox", "0 0 24 24");
+                    icon.innerHTML = '<path d="M12 4C6.48 4 2 8.48 2 13s4.48 9 10 9 10-4.48 10-9-4.48-9-10-9zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-11c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/><path d="M0 0h24v24H0z" fill="none"/>';
+                });
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Ventas</title>
+    <link rel="stylesheet" href="http://localhost/xd//style.css">
+    <style>
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 5px 20px;
+            font-size: 14px;
+            background-color: rgb(199, 128, 234);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="back-to-home" onclick="window.location.href='bienvenida.php'">Inicio</button>
+
+    <div class="form-container">
+        <form class="form" action="submit_form.php" method="post" enctype="multipart/form-data">
+            <h2>Registro de Ventas</h2>
+
+            <div class="form-group">
+                <label for="fecha_compra">Fecha de la Compra:</label>
+                <input type="date" id="dia_compra" name="dia_compra" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre_cliente">Nombre del Cliente:</label>
+                <input type="text" id="nombre_cliente" name="nombre_cliente" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre_producto">Nombre del Producto:</label>
+                <input type="text" id="nombre_producto" name="nombre_producto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad Comprada:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+            </div>
+
+            <div class="form-group">
+                <label for="precio">Precio Total:</label>
+                <input type="number" step="0.01" id="precio" name="precio" value="0.00" required>
+            </div>            
+
+            <div class="form-group">
+                <label for="vendedor">Nombre del Vendedor:</label>
+                <input type="text" id="vendedor" name="vendedor" required>
+            </div>
+
+            <button class="form-submit-btn" type="submit">ENVIAR</button>
+        </form>
+    </div>
+</body>
+
+</html>
